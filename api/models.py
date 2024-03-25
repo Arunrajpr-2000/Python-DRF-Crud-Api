@@ -13,6 +13,9 @@ class Item(models.Model):
     itemName=    models.CharField(max_length=100, unique=True)
     date_added= models.DateField(auto_now_add=True)
     itemLocation = models.ForeignKey(Location,on_delete=models.CASCADE)
+    itemWeight = models.BigIntegerField(default=0)
+    isInside = models.BooleanField(default= False)
+
 
     def __str__(self):
        return self.itemName
