@@ -1,8 +1,8 @@
 from rest_framework import generics
 
-from .models import Item,Location
+from .models import Item,Location,Tag
 
-from .serializers import ItemSerializer,LocationSerializer
+from .serializers import ItemSerializer,LocationSerializer,TagSerializer
 
 
 class ItemList(generics.ListCreateAPIView):
@@ -28,4 +28,14 @@ class LocationList(generics.ListCreateAPIView):
 
 class LocationDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class=LocationSerializer
-    queryset = Location.objects.all()           
+    queryset = Location.objects.all()    
+
+
+class TagList(generics.ListCreateAPIView):
+    serializer_class = TagSerializer
+    queryset = Tag.objects.all()
+
+class TagDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class= TagSerializer
+    queryset = Tag.objects.all()    
+               
