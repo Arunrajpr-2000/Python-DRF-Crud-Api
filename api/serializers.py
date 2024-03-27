@@ -20,7 +20,7 @@ class ItemSerializer(serializers.ModelSerializer):
     source_details= SourceSerializer(source='source',read_only=True)
     class Meta:
         model = Item
-        fields = ('id', 'itemName', 'date_added', 'itemLocation', 'itemWeight', 'isInside', 'tags','tagDetails','source_details','source')
+        fields = ('id', 'itemName', 'date_added', 'itemLocation', 'itemWeight', 'isInside', 'tags','tagDetails','source','source_details')
 
 class LocationSerializer(serializers.ModelSerializer):
     class Meta:

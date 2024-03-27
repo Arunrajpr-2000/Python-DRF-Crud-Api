@@ -10,9 +10,12 @@ class ItemList(generics.ListCreateAPIView):
 
     def get_queryset(self):
         location = self.request.query_params.get('location')
+        source=self.request.query_params.get('source')
         queryset = Item.objects.all()
         if location is not None:
             queryset = queryset.filter(itemLocation=location)
+        elif source is not None:
+            queryset = queryset.filter(source=source)
         return queryset
 
     
@@ -43,8 +46,12 @@ class SourceList(generics.ListCreateAPIView):
     serializer_class=SourceSerializer
     queryset = Source.objects.all()
 
-class SourceDetail(generics.ListCreateAPIView):
+class SourceDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class=SourceSerializer
     queryset = Source.objects.all()    
+
+    
+
+
 
                
